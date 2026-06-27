@@ -1,18 +1,40 @@
 # make_project
 
-A tiny CLI tool that scaffolds a standard project directory structure with a single command.
+A tiny CLI tool that scaffolds a standard project directory structure and sets up a GitHub repository — all with a single command.
 
-## Directory structure created
+## What it does
 
 ```
-<project_name>/
+make_project my_research_2025
+```
+
+1. Creates `my_research_2025/` in your current directory with all standard subdirectories
+2. Initialises `50_code/` as a git repository
+3. Writes a default `README.md` inside `50_code/`
+4. Creates a GitHub repo at `github.com/lukas-neumann-astro/my_research_2025`
+5. Commits and pushes the README to `main`
+
+### Directory structure created
+
+```
+my_research_2025/
 ├── 10_orga/
 ├── 20_literature/
 ├── 30_data/
-├── 50_code/
+├── 50_code/          ← git repo, linked to GitHub
+│   └── README.md
 ├── 70_results/
 ├── 80_report/
 └── 90_presentation/
+```
+
+## Prerequisites
+
+**GitHub CLI** must be installed and authenticated:
+
+```bash
+brew install gh
+gh auth login
 ```
 
 ## Installation
@@ -20,51 +42,36 @@ A tiny CLI tool that scaffolds a standard project directory structure with a sin
 Install directly from GitHub (into your active virtual environment):
 
 ```bash
-pip install git+https://github.com/<your-username>/make_project.git
+pip install git+https://github.com/lukas-neumann-astro/make_project.git
 ```
 
 To install a specific tag or branch:
 
 ```bash
-pip install git+https://github.com/<your-username>/make_project.git@v0.1.0
-pip install git+https://github.com/<your-username>/make_project.git@main
+pip install git+https://github.com/lukas-neumann-astro/make_project.git@v0.1.0
 ```
 
 ## Usage
 
 ```bash
+# Create project directories only
 make_project <project_name>
+
+# Create directories + initialise git + create a public GitHub repo
+make_project <project_name> --github
+
+# Create directories + initialise git + create a private GitHub repo
+make_project <project_name> --private
 ```
 
-Example:
-
-```bash
-make_project my_research_2025
-```
-
-Output:
-
-```
-Created project directory: /Users/you/current_dir/my_research_2025
-  + 10_orga/
-  + 20_literature/
-  + 30_data/
-  + 50_code/
-  + 70_results/
-  + 80_report/
-  + 90_presentation/
-
-Project 'my_research_2025' is ready.
-```
-
-The project folder is always created **inside your current working directory**.
+`--private` implies `--github`, so you don't need to pass both.
 
 ## Development
 
 Clone and install in editable mode:
 
 ```bash
-git clone https://github.com/<your-username>/make_project.git
+git clone https://github.com/lukas-neumann-astro/make_project.git
 cd make_project
 pip install -e .
 ```
