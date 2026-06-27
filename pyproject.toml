@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "make_project"
+version = "0.1.0"
+description = "Scaffold a standard project directory structure with one command."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+[project.scripts]
+make_project = "make_project.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["make_project*"]
