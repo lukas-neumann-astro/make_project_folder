@@ -40,7 +40,7 @@ _Short description of the project._
 ## Getting started
 
 ```bash
-git clone https://github.com/{org}/{project_name}.git
+git clone https://github.com/lukas-neumann-astro/{project_name}.git
 ```
 """
 
@@ -85,6 +85,14 @@ def init_code_repo(code_path: Path, project_name: str, visibility: str = "public
     )
     print("    Initialised git repository (branch: main)")
 
+    # Stage and commit README so --push has something to push
+    subprocess.run(["git", "add", "README.md"], cwd=code_path, check=True, capture_output=True)
+    subprocess.run(
+        ["git", "commit", "-m", "Initial commit"],
+        cwd=code_path, check=True, capture_output=True,
+    )
+    print("    Created initial commit")
+
     # Create GitHub repo under the org and push
     subprocess.run(
         [
@@ -98,7 +106,7 @@ def init_code_repo(code_path: Path, project_name: str, visibility: str = "public
         ],
         check=True,
     )
-    print(f"    Created GitHub repo and pushed: https://github.com/{GITHUB_ORG}/{project_name}")
+    print(f"    Created GitHub repo and pushed: https://github.com/lukas-neumann-astro/{project_name}")
 
 
 def create_project(
