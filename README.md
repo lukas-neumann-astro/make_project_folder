@@ -5,19 +5,19 @@ A tiny CLI tool that scaffolds a standard project directory structure and sets u
 ## What it does
 
 ```
-make_project my_research_2025
+make_project my_amazing_project
 ```
 
-1. Creates `my_research_2025/` in your current directory with all standard subdirectories
+1. Creates `my_amazing_project/` in your current directory with all standard subdirectories
 2. Initialises `50_code/` as a git repository
 3. Writes a default `README.md` inside `50_code/`
-4. Creates a GitHub repo at `github.com/lukas-neumann-astro/my_research_2025`
+4. Creates a GitHub repo at `github.com/lukas-neumann-astro/my_amazing_project`
 5. Commits and pushes the README to `main`
 
 ### Directory structure created
 
 ```
-my_research_2025/
+my_amazing_project/
 ├── 10_orga/
 ├── 20_literature/
 ├── 30_data/
